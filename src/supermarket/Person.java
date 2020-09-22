@@ -5,11 +5,14 @@
  */
 package supermarket;
 
+import Database.ObjectDb;
+
 /**
  *
  * @author heaty
  */
-public class Person extends ObjectDb {
+public abstract class Person extends ObjectDb {
+
     String name;
     protected String phone;
     String username;
@@ -24,26 +27,28 @@ public class Person extends ObjectDb {
         this.setPassword(password);
     }
 
-    private String getPassword() {
+    
+    public abstract void register();
+   public abstract Person login(String username, String password) throws Exception;
+
+    protected String getPassword() {
         return this.password.replace(this.secretKey, "");
     }
 
     private void setPassword(String password) {
         this.password = password + this.secretKey;
     }
-    
-    protected void setMoney(double money) throws Exception{
-        if (money < 0) throw new Exception("Money can't be negative");
-        this.password = password + this.secretKey;
+
+    protected void setMoney(double money) throws Exception {
+        if (money < 0) {
+            throw new Exception("Money can't be negative");
+        }
+        
+        this.money = money;
     }
 
-    public boolean isCorrectPassword(String password) {
-        return this.getPassword().equals(password);
-    }
 
-    public int getToken() {
-        return this._id;
-    }
+
 
     public void update(String name, String phone) {
         this.phone = phone;
@@ -58,5 +63,7 @@ public class Person extends ObjectDb {
         System.out.println("Phone: " + this.phone);
 
     }
+
+   
 
 }

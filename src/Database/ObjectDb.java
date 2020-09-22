@@ -5,15 +5,15 @@
  */
 package Database;
 
-
 /**
  *
  * @author heaty
  */
 public class ObjectDb {
-    final String secretKey = "mySecret";
-    int _id = this.idGenerator();
-    
+
+    public final String secretKey = "mySecret";
+    public int _id = this.idGenerator();
+
     private int lastId = 0;
 
     private int idGenerator() {

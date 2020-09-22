@@ -5,7 +5,6 @@
  */
 package Database;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -15,11 +14,12 @@ import java.util.*;
 public class Database<T extends ObjectDb> {
 
     private ArrayList<T> repository = new ArrayList<T>(1000);
-    int count = 0;
+   public int count = 0;
 
     public void insertOne(T obj) {
         this.repository.add(obj);
         count++;
+  
     }
 
     private int findIndex(int _id) throws IndexOutOfBoundsException {
